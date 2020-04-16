@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1097952145227",
+    "firebase_url": "https://myjournal-6fd4a.firebaseio.com",
+    "project_id": "myjournal-6fd4a",
+    "storage_bucket": "myjournal-6fd4a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1097952145227:android:8cd2e32ea557608cba42ce",
+        "android_client_info": {
+          "package_name": "com.yaronfuks.myjournal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1097952145227-5vuka6a8tl6ds3i3ekt5r12ik0mhbp2h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_d_eLGdXtyZ5HLwXRCevb0JrHcBFoNtk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1097952145227-5vuka6a8tl6ds3i3ekt5r12ik0mhbp2h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
