@@ -14,7 +14,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -26,7 +25,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -147,14 +145,10 @@ public class PostJournalActivity extends AppCompatActivity implements View.OnCli
             public void onClick(DialogInterface dialog, int item) {
 
                 if (options[item].equals("Take Photo")) {
-                   askCameraPermissions();
-//                    Intent takePicture = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-//                    startActivityForResult(takePicture, 0);
+                    askCameraPermissions();
 
                 } else if (options[item].equals("Choose from Gallery")) {
                     choosePhotoFromGallery();
-//                    Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-//                    startActivityForResult(pickPhoto , 1);
 
                 } else if (options[item].equals("Cancel")) {
                     dialog.dismiss();
@@ -174,12 +168,7 @@ public class PostJournalActivity extends AppCompatActivity implements View.OnCli
             case R.id.postCameraButton:
 
                 selectImage(this);
-//                askCameraPermissions();
 
-                //get image from gallery/phone
-//                Intent galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
-//                galleryIntent.setType("image/*");
-//                startActivityForResult(galleryIntent, GALLERY_CODE);
                 break;
         }
 
@@ -202,7 +191,6 @@ public class PostJournalActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == CAMERA_PERM_CODE) {
             if (grantResults.length < 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 dispatchTakePictureIntent();
@@ -300,12 +288,12 @@ public class PostJournalActivity extends AppCompatActivity implements View.OnCli
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CAMERA_REQUEST_CODE) {
-           if (resultCode == Activity.RESULT_OK){
-               File f = new File(currentPhotoPath);
-               imageUri = Uri.fromFile(f);
-               imageView.setImageURI(Uri.fromFile(f));
+            if (resultCode == Activity.RESULT_OK){
+                File f = new File(currentPhotoPath);
+                imageUri = Uri.fromFile(f);
+                imageView.setImageURI(Uri.fromFile(f));
 
-           }
+            }
         }
 
         if (requestCode == GALLERY_CODE && resultCode == RESULT_OK) {
@@ -323,7 +311,7 @@ public class PostJournalActivity extends AppCompatActivity implements View.OnCli
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "my_image_" + timeStamp;
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File image = File.createTempFile(
+       File image = File.createTempFile(
                 imageFileName,  /* prefix */
                 ".jpg",         /* suffix */
                 storageDir      /* directory */
@@ -374,4 +362,3 @@ public class PostJournalActivity extends AppCompatActivity implements View.OnCli
         }
     }
 }
-
